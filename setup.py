@@ -10,7 +10,7 @@ if "--unfused" in sys.argv:
     sys.argv.remove("--unfused")
 else:
     cuda_extension = CUDAExtension(
-            'fused_adan', 
+            'fused_adan',
             sources=['fused_adan/pybind_adan.cpp','./fused_adan/fused_adan_kernel.cu', './fused_adan/multi_tensor_adan_kernel.cu']
         )
 
@@ -30,6 +30,6 @@ setup(
         'Xie, Xingyu and Zhou, Pan and Li, Huan and '
         'Lin, Zhouchen and Yan, Shuicheng'
     ),
-    ext_modules=[cuda_extension] if build_cuda_ext else [],
+    ext_modules=[],
     cmdclass={'build_ext': BuildExtension} if build_cuda_ext else {},
 )
